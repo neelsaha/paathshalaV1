@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-$GLOBALS['_FILENAME'] = basename(__FILE__);
 class Login extends CI_Model {
     private $_token;
     private $_data;
@@ -29,7 +28,8 @@ class Login extends CI_Model {
                 'sessionId' => session_id(),
                 'username' => $this->_data->username,
                 'userId' => $this->_data->user_id,
-                'token' => $this->_token
+                'token' => $this->_token,
+                'orga' => $this->_data->organization_id
             );
             $_SESSION['sessArr'] = $aSessData; 
         }catch(Exception $e){

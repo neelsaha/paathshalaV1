@@ -66,6 +66,32 @@ class StudentModel extends CI_Model{
         }
         return $aData;
     }
+
+    public function getList($iClass,$iSection,$aStatusCode){
+        TRC_LOG('debug',"Inside getList");
+        $aData = array();
+        try{
+            $this->db->select('student_first_name,student_last_name,registration_id,rollno,org_name,class_value,sec_value,attd_percentage');
+            $this->db->from('student');
+            $this->db->join('organization','organization.organization_id = student.organization_id');
+            $this->db->join('class','class.id = student.class');
+            $this->db->join('section','section.id = student.section');
+            if($this->sesssecurity->getVariableValue('role') == self::$_roles['superAdmin']){
+                TRC_LOG('debug',"super admin");
+                $this->db->where( array('student.class =' => $iClass, 'student.section =' => $iSection, 'student.isDeleted =' => 'N'));
+            }else{
+                $this->db->where( array('student.organization_id =' => $this->sesssecurity->getVariableValue('orga'), 'student.class =' => $iClass, 'student.section =' => $iSection, 'student.isDeleted =' => 'N'));
+            }
+            $aResult = $this->db->get()->result();
+            $aData = array("list" => $aResult, "num_rows" => count($aResult));
+            TRC_LOG('debug',"QUERY :: ".$this->db->last_query());
+            TRC_LOG('debug',"DATA :: ".json_encode($aResult, JSON_UNESCAPED_SLASHES));
+        }catch(Exception $e){
+            TRC_LOG('error',$e->getMessage());
+            $oStatusCode = 500;
+        }
+        return $aData;
+    }
 }
 
 ?>

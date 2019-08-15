@@ -60,6 +60,7 @@ $route['login']['post'] = 'auth/login';
 $route['logout'] = 'auth/logout';
 $route['user']['put'] = 'user/update';
 $route['student/([0-9]+)']['get'] = 'student/viewStudentDetails/$1';
+$route['student/([0-9]+)/([0-9]+)']['get'] = 'student/getStudentList/$1/$2';
 $route['user/([a-z0-9A-Z]+)']['get'] = 'user/getUserDetails/$1';
 $route['user']['get'] = 'user/getMyDetails';
 $route['class']['get'] = 'classDetails/getDetails';
