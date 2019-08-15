@@ -18,7 +18,7 @@
 								"exec": [
 									"pm.test('execute', function () {",
 									"\tpm.response.to.have.status(200);",
-									"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 									"\tvar jsonData = pm.response.json();",
 									"\t",
 									"\t",
@@ -65,7 +65,7 @@
 								"exec": [
 									"pm.test('execute', function () {",
 									"\tpm.response.to.have.status(200);",
-									"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 									"\tvar jsonData = pm.response.json();",
 									"\t",
 									"\t",
@@ -109,7 +109,7 @@
 								"exec": [
 									"pm.test('execute', function () {",
 									"\tpm.response.to.have.status(200);",
-									"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 									"\tvar jsonData = pm.response.json();",
 									"\t",
 									"\t",
@@ -153,7 +153,7 @@
 								"exec": [
 									"pm.test('execute', function () {",
 									"\tpm.response.to.have.status(200);",
-									"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 									"\tvar jsonData = pm.response.json();",
 									"\t",
 									"\t",
@@ -197,7 +197,7 @@
 								"exec": [
 									"pm.test('execute', function () {",
 									"\tpm.response.to.have.status(200);",
-									"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 									"\tvar jsonData = pm.response.json();",
 									"\t",
 									"\t",
@@ -354,7 +354,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"\t",
 													"\t",
@@ -400,7 +400,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"})",
 													"",
@@ -434,7 +434,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"})",
 													"",
@@ -515,7 +515,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"\t",
 													"\t",
@@ -571,7 +571,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"})",
 													"",
@@ -690,7 +690,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"\t",
 													"\t",
@@ -736,7 +736,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"\t",
 													"})",
@@ -771,7 +771,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"})",
 													"",
@@ -852,7 +852,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"\t",
 													"\t",
@@ -898,7 +898,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tvar jsonData = pm.response.json();",
 													"})",
 													"",
@@ -1014,7 +1014,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"\t",
@@ -1060,7 +1060,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"})",
@@ -1163,7 +1163,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"\t",
@@ -1209,7 +1209,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"})",
@@ -1349,7 +1349,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"\t",
@@ -1395,7 +1395,51 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(401);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+											"\tpm.response.length === 0;",
+											"})",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4ead4bd51aebf3f8253d72b2ef74956bd8b9b14b0f1a09538872f8aa5756f8c1",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}student/1",
+									"host": [
+										"{{path}}student"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "students list fail",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+										"exec": [
+											"pm.test('execute', function () {",
+											"\tpm.response.to.have.status(401);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tpm.response.length === 0;",
 											"})",
 											""
@@ -1522,7 +1566,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"\t",
@@ -1568,7 +1612,51 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(401);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+											"\tpm.response.length === 0;",
+											"})",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4ead4bd51aebf3f8253d72b2ef74956bd8b9b14b0f1a09538872f8aa5756f8c1",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}student/1",
+									"host": [
+										"{{path}}student"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "students list fail",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+										"exec": [
+											"pm.test('execute', function () {",
+											"\tpm.response.to.have.status(401);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tpm.response.length === 0;",
 											"})",
 											""
@@ -1663,7 +1751,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"\t",
@@ -1709,7 +1797,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"})",
@@ -1748,7 +1836,7 @@
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(401);",
 											"pm.globals.get(\"variable_key\");",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tpm.response.length === 0;",
 											"\t",
 											"})",
@@ -1785,7 +1873,7 @@
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(404);",
 											"pm.globals.get(\"variable_key\");",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tpm.response.length === 0;",
 											"\t",
 											"})",
@@ -1806,6 +1894,84 @@
 									],
 									"path": [
 										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "students list success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+										"exec": [
+											"pm.test('execute', function () {",
+											"\tpm.response.to.have.status(200);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+											"\tvar jsonData = pm.response.json();",
+											"\t",
+											"})",
+											"",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body('{\"list\":[{\"student_first_name\":\"Neelanjan\",\"student_last_name\":\"Saha\",\"registration_id\":\"Test/01\",\"rollno\":\"1\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"A\",\"attd_percentage\":\"100.00\"}],\"num_rows\":1}');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}student/5/1",
+									"host": [
+										"{{path}}student"
+									],
+									"path": [
+										"5",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "students list success 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+										"exec": [
+											"pm.test('execute', function () {",
+											"\tpm.response.to.have.status(200);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+											"\tvar jsonData = pm.response.json();",
+											"\t",
+											"})",
+											"",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body('{\"list\":[],\"num_rows\":0}');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}student/7/2",
+									"host": [
+										"{{path}}student"
+									],
+									"path": [
+										"7",
+										"2"
 									]
 								}
 							},
@@ -1904,7 +2070,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"\t",
@@ -1950,7 +2116,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"})",
@@ -1989,7 +2155,7 @@
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(404);",
 											"pm.globals.get(\"variable_key\");",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tpm.response.length === 0;",
 											"\t",
 											"})",
@@ -2026,7 +2192,7 @@
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(404);",
 											"pm.globals.get(\"variable_key\");",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tpm.response.length === 0;",
 											"\t",
 											"})",
@@ -2047,6 +2213,84 @@
 									],
 									"path": [
 										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "students list success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+										"exec": [
+											"pm.test('execute', function () {",
+											"\tpm.response.to.have.status(200);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+											"\tvar jsonData = pm.response.json();",
+											"\t",
+											"})",
+											"",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body('{\"list\":[{\"student_first_name\":\"Neelanjan\",\"student_last_name\":\"Saha\",\"registration_id\":\"Test/01\",\"rollno\":\"1\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"A\",\"attd_percentage\":\"100.00\"}],\"num_rows\":1}');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}student/5/1",
+									"host": [
+										"{{path}}student"
+									],
+									"path": [
+										"5",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "students list success 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+										"exec": [
+											"pm.test('execute', function () {",
+											"\tpm.response.to.have.status(200);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+											"\tvar jsonData = pm.response.json();",
+											"\t",
+											"})",
+											"",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body('{\"list\":[],\"num_rows\":0}');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}student/7/2",
+									"host": [
+										"{{path}}student"
+									],
+									"path": [
+										"7",
+										"2"
 									]
 								}
 							},
@@ -2123,7 +2367,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"\t",
@@ -2169,7 +2413,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"})",
@@ -2207,7 +2451,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"\tvar jsonData = pm.response.json();",
 											"\t",
 											"})",
@@ -2229,6 +2473,84 @@
 										"{{path}}student"
 									],
 									"path": [
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "students list success 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+										"exec": [
+											"pm.test('execute', function () {",
+											"\tpm.response.to.have.status(200);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+											"\tvar jsonData = pm.response.json();",
+											"\t",
+											"})",
+											"",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body('{\"list\":[{\"student_first_name\":\"Neelanjan\",\"student_last_name\":\"Saha\",\"registration_id\":\"Test/01\",\"rollno\":\"1\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"A\",\"attd_percentage\":\"100.00\"}],\"num_rows\":1}');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}student/5/1",
+									"host": [
+										"{{path}}student"
+									],
+									"path": [
+										"5",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "students list success 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+										"exec": [
+											"pm.test('execute', function () {",
+											"\tpm.response.to.have.status(200);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+											"\tvar jsonData = pm.response.json();",
+											"\t",
+											"})",
+											"",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body('{\"list\":[{\"student_first_name\":\"Test\",\"student_last_name\":\"Test last name\",\"registration_id\":\"test/02\",\"rollno\":\"5\",\"org_name\":\"Test School\",\"class_value\":\"VII\",\"sec_value\":\"B\",\"attd_percentage\":\"100.00\"}],\"num_rows\":1}');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}student/7/2",
+									"host": [
+										"{{path}}student"
+									],
+									"path": [
+										"7",
 										"2"
 									]
 								}
@@ -2305,7 +2627,7 @@
 	],
 	"variable": [
 		{
-			"id": "0322efac-3c51-4b23-85c1-b549fe45ae07",
+			"id": "fc6ca8bf-44fb-45d7-b3f5-5d0b6aa733ad",
 			"key": "path",
 			"value": "http://localhost:80/paathshalaV1/",
 			"type": "string"
