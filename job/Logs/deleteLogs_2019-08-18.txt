@@ -1,0 +1,5 @@
+DEBUG :: JOB STARTING............
+DEBUG :: Date 30 days ago: 19-07-2019
+DEBUG :: Processing APPLICATION logs
+DEBUG :: Processing JOB logs
+DEBUG :: JOB SUCCESS!
