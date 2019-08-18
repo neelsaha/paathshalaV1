@@ -1405,16 +1405,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "4ead4bd51aebf3f8253d72b2ef74956bd8b9b14b0f1a09538872f8aa5756f8c1",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -1449,16 +1439,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "4ead4bd51aebf3f8253d72b2ef74956bd8b9b14b0f1a09538872f8aa5756f8c1",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -2601,6 +2581,783 @@
 					"_postman_isSubFolder": true
 				}
 			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "student",
+					"item": [
+						{
+							"name": "action",
+							"item": [
+								{
+									"name": "login student",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "796db4ae-d7eb-4b09-aecf-a836231ad4da",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tvar jsonData = pm.response.json();",
+													"\t",
+													"\t",
+													"    pm.expect(jsonData.role).to.eql('1');",
+													"    ",
+													"pm.globals.set(\"studentAuth\", jsonData.token);",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"username\":\"testStudent\",\n\t\"password\":\"123456\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}login",
+											"host": [
+												"{{path}}login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "class list fail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(401);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tpm.response.length === 0;",
+													"})",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{path}}class/list",
+											"host": [
+												"{{path}}class"
+											],
+											"path": [
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0b4f4392-8b96-437b-94cc-cfb27b7af3b9",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"",
+													"    pm.globals.set(\"studentAuth\", \"\");",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{path}}logout",
+											"host": [
+												"{{path}}logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{studentAuth}}",
+								"type": "string"
+							}
+						]
+					},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "parent",
+					"item": [
+						{
+							"name": "action",
+							"item": [
+								{
+									"name": "login parent",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "796db4ae-d7eb-4b09-aecf-a836231ad4da",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tvar jsonData = pm.response.json();",
+													"\t",
+													"\t",
+													"    pm.expect(jsonData.role).to.eql('2');",
+													"    ",
+													"pm.globals.set(\"parentAuth\", jsonData.token);",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"username\":\"testParent\",\n\t\"password\":\"123456\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}login",
+											"host": [
+												"{{path}}login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "class list fail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(401);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tpm.response.length === 0;",
+													"})",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{path}}class/list",
+											"host": [
+												"{{path}}class"
+											],
+											"path": [
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0b4f4392-8b96-437b-94cc-cfb27b7af3b9",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"",
+													"    pm.globals.set(\"parentAuth\", \"\");",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{path}}logout",
+											"host": [
+												"{{path}}logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{parentAuth}}",
+								"type": "string"
+							}
+						]
+					},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "teacher",
+					"item": [
+						{
+							"name": "action",
+							"item": [
+								{
+									"name": "login teacher",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "796db4ae-d7eb-4b09-aecf-a836231ad4da",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tvar jsonData = pm.response.json();",
+													"\t",
+													"\t",
+													"    pm.expect(jsonData.role).to.eql('3');",
+													"    ",
+													"pm.globals.set(\"teacherAuth\", jsonData.token);",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"username\":\"testTeacher\",\n\t\"password\":\"123456\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}login",
+											"host": [
+												"{{path}}login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "class list success",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"})",
+													"",
+													"pm.test(\"Body is correct\", function () {",
+													"    pm.response.to.have.body('{\"list\":[{\"class_value\":\"V\",\"sec_value\":\"A\",\"teacher_first_name\":\"Test\",\"teacher_last_name\":\"Teacher\"},{\"class_value\":\"XI\",\"sec_value\":\"Science\",\"teacher_first_name\":null,\"teacher_last_name\":null}],\"num_rows\":2}');",
+													"})",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{path}}class/list",
+											"host": [
+												"{{path}}class"
+											],
+											"path": [
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0b4f4392-8b96-437b-94cc-cfb27b7af3b9",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"",
+													"    pm.globals.set(\"teacherAuth\", \"\");",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{path}}logout",
+											"host": [
+												"{{path}}logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{teacherAuth}}",
+								"type": "string"
+							}
+						]
+					},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "schoolAdmin",
+					"item": [
+						{
+							"name": "action",
+							"item": [
+								{
+									"name": "login school",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "796db4ae-d7eb-4b09-aecf-a836231ad4da",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tvar jsonData = pm.response.json();",
+													"\t",
+													"\t",
+													"    pm.expect(jsonData.role).to.eql('4');",
+													"    ",
+													"pm.globals.set(\"schoolAuth\", jsonData.token);",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"username\":\"testSchoolAdmin\",\n\t\"password\":\"123456\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}login",
+											"host": [
+												"{{path}}login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "class list success",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"})",
+													"",
+													"pm.test(\"Body is correct\", function () {",
+													"    pm.response.to.have.body('{\"list\":[{\"class_value\":\"V\",\"sec_value\":\"A\",\"teacher_first_name\":\"Test\",\"teacher_last_name\":\"Teacher\"},{\"class_value\":\"XI\",\"sec_value\":\"Science\",\"teacher_first_name\":null,\"teacher_last_name\":null}],\"num_rows\":2}');",
+													"})",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{path}}class/list",
+											"host": [
+												"{{path}}class"
+											],
+											"path": [
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0b4f4392-8b96-437b-94cc-cfb27b7af3b9",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"",
+													"    pm.globals.set(\"schoolAuth\", \"\");",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{path}}logout",
+											"host": [
+												"{{path}}logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{schoolAuth}}",
+								"type": "string"
+							}
+						]
+					},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "superAdmin",
+					"item": [
+						{
+							"name": "action",
+							"item": [
+								{
+									"name": "login admin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "796db4ae-d7eb-4b09-aecf-a836231ad4da",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tvar jsonData = pm.response.json();",
+													"\t",
+													"\t",
+													"    pm.expect(jsonData.role).to.eql('5');",
+													"    ",
+													"pm.globals.set(\"adminAuth\", jsonData.token);",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"username\":\"testAdmin\",\n\t\"password\":\"123456\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}login",
+											"host": [
+												"{{path}}login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "class list success 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"})",
+													"",
+													"pm.test(\"Body is correct\", function () {",
+													"    pm.response.to.have.body('{\"list\":[{\"class_value\":\"V\",\"sec_value\":\"A\",\"teacher_first_name\":\"Test\",\"teacher_last_name\":\"Teacher\"},{\"class_value\":\"XI\",\"sec_value\":\"Science\",\"teacher_first_name\":null,\"teacher_last_name\":null}],\"num_rows\":2}');",
+													"})",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{path}}class/list/1",
+											"host": [
+												"{{path}}class"
+											],
+											"path": [
+												"list",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "class list success 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "279ea87c-ea34-497f-b433-2e6ce3f4a191",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"})",
+													"",
+													"pm.test(\"Body is correct\", function () {",
+													"    pm.response.to.have.body('{\"list\":[{\"class_value\":\"III\",\"sec_value\":\"B\",\"teacher_first_name\":null,\"teacher_last_name\":null}],\"num_rows\":1}');",
+													"})",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{path}}class/list/2",
+											"host": [
+												"{{path}}class"
+											],
+											"path": [
+												"list",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e90c2174-d42f-48db-964b-9852e2d83fd6",
+												"exec": [
+													"pm.test('Some test name', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.globals.set(\"adminAuth\", \"\");",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{path}}logout",
+											"host": [
+												"{{path}}logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{adminAuth}}",
+								"type": "string"
+							}
+						]
+					},
+					"_postman_isSubFolder": true
+				}
+			]
 		}
 	],
 	"event": [
@@ -2627,7 +3384,7 @@
 	],
 	"variable": [
 		{
-			"id": "fc6ca8bf-44fb-45d7-b3f5-5d0b6aa733ad",
+			"id": "22dafacc-848f-4993-a062-b27613efafce",
 			"key": "path",
 			"value": "http://localhost:80/paathshalaV1/",
 			"type": "string"
