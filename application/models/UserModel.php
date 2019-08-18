@@ -50,8 +50,9 @@ class UserModel extends CI_Model {
                 $this->db->from('login');
                 $this->db->join('teacher','teacher.teacher_id = login.teacher_id');
                 $this->db->join('organization','organization.organization_id = login.organization_id');
-                $this->db->join('class','class.id = teacher.class');
-                $this->db->join('section','section.id = teacher.section');
+                $this->db->join('organization_class_mapping','login.teacher_id = organization_class_mapping.class_teacher_id','left');
+                $this->db->join('class','class.id = organization_class_mapping.class');
+                $this->db->join('section','section.id = organization_class_mapping.section');
                 $this->db->where( array('username =' => $iUsername, 'login.isDeleted =' => 'N'));
             }else if($this->sesssecurity->getVariableValue('role') == self::$_roles['schoolAdmin']){
                 TRC_LOG('debug',"Role School Admin");
