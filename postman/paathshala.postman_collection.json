@@ -2437,7 +2437,7 @@
 											"})",
 											"",
 											"pm.test(\"Body is correct\", function () {",
-											"    pm.response.to.have.body('{\"student_first_name\":\"Test\",\"student_last_name\":\"Test last name\",\"registration_id\":\"test/02\",\"rollno\":\"5\",\"org_name\":\"Test School\",\"class_value\":\"VII\",\"sec_value\":\"B\",\"first_name\":null,\"last_name\":null,\"mobile\":null,\"attd_percentage\":\"100.00\"}');",
+											"    pm.response.to.have.body('{\"student_first_name\":\"Test\",\"student_last_name\":\"Test last\",\"registration_id\":\"test/02\",\"rollno\":\"5\",\"org_name\":\"Test School 2\",\"class_value\":\"VII\",\"sec_value\":\"B\",\"first_name\":null,\"last_name\":null,\"mobile\":null,\"attd_percentage\":\"100.00\"}');",
 											"})"
 										],
 										"type": "text/javascript"
@@ -2514,7 +2514,7 @@
 											"})",
 											"",
 											"pm.test(\"Body is correct\", function () {",
-											"    pm.response.to.have.body('{\"list\":[{\"student_first_name\":\"Test\",\"student_last_name\":\"Test last name\",\"registration_id\":\"test/02\",\"rollno\":\"5\",\"org_name\":\"Test School\",\"class_value\":\"VII\",\"sec_value\":\"B\",\"attd_percentage\":\"100.00\"}],\"num_rows\":1}');",
+											"    pm.response.to.have.body('{\"list\":[{\"student_first_name\":\"Test\",\"student_last_name\":\"Test last\",\"registration_id\":\"test/02\",\"rollno\":\"5\",\"org_name\":\"Test School 2\",\"class_value\":\"VII\",\"sec_value\":\"B\",\"attd_percentage\":\"100.00\"}],\"num_rows\":1}');",
 											"})"
 										],
 										"type": "text/javascript"
@@ -3384,7 +3384,7 @@
 	],
 	"variable": [
 		{
-			"id": "22dafacc-848f-4993-a062-b27613efafce",
+			"id": "1d995582-55b9-4ecb-b9b1-3546c0d6d6a8",
 			"key": "path",
 			"value": "http://localhost:80/paathshalaV1/",
 			"type": "string"
