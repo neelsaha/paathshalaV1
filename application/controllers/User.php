@@ -13,7 +13,6 @@ class User extends CI_Controller {
             $aResponse = $this->UserModel->update($aStatusCode,$aData);
         }else{
             TRC_LOG('debug','Unaothorized access');
-            $aStatusCode = 401;
         }
         $this->inputoutput->setResponse($aStatusCode,$aResponse);
     }
@@ -46,7 +45,6 @@ class User extends CI_Controller {
 
         }else{
             TRC_LOG('debug','Unaothorized access');
-            $aStatusCode = 401;
         }
         $this->inputoutput->setResponse($aStatusCode,$aResponse);
     }
@@ -62,7 +60,6 @@ class User extends CI_Controller {
             $aResponse = $this->UserModel->getDetails($aStatusCode,$aUsername);
         }else{
             TRC_LOG('debug','Unaothorized access');
-            $aStatusCode = 401;
         }
         $this->inputoutput->setResponse($aStatusCode,$aResponse);
     }

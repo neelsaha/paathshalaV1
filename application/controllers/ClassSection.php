@@ -43,13 +43,12 @@ class ClassSection extends CI_Controller {
             $aOrga = $this->sesssecurity->getVariableValue('orga');
         }else{
             TRC_LOG('debug','Unaothorized access');
-            $aStatusCode = 401;
         }
 
-        if($aStatusCode != 401 && $aOrga){
+        if($aStatusCode < 400 && $aOrga){
             $this->load->model('ClassSecModel');
             $aResponse = $this->ClassSecModel->getList($aOrga,$aStatusCode);
-        }else if($aStatusCode != 401 && !$aOrga){
+        }else if($aStatusCode < 400 && !$aOrga){
             $aStatusCode = 400;
         }
 

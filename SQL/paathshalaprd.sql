@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2019 at 10:26 PM
+-- Generation Time: Aug 25, 2019 at 05:40 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -61,18 +61,18 @@ CREATE TABLE `class` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examtable`
+-- Table structure for table `exam`
 --
 
-CREATE TABLE `examtable` (
+CREATE TABLE `exam` (
   `examId` int(11) NOT NULL,
-  `schoolID` int(11) NOT NULL,
-  `class` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `section` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ExamName` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subjectId` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TotalMarks` int(10) NOT NULL,
-  `Date` int(11) NOT NULL
+  `organization_id` int(11) NOT NULL,
+  `class` int(10) NOT NULL,
+  `section` int(10) NOT NULL,
+  `exam_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` int(10) NOT NULL,
+  `total_marks` int(10) NOT NULL,
+  `timestamp` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -311,6 +311,17 @@ CREATE TABLE `studentsubjectmapping` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subject`
+--
+
+CREATE TABLE `subject` (
+  `subject_id` int(11) NOT NULL,
+  `subject_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `syllabus`
 --
 
@@ -384,7 +395,18 @@ ALTER TABLE `board_master`
 -- Indexes for table `class`
 --
 ALTER TABLE `class`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `class_value` (`class_value`);
+
+--
+-- Indexes for table `exam`
+--
+ALTER TABLE `exam`
+  ADD PRIMARY KEY (`examId`),
+  ADD KEY `class` (`class`),
+  ADD KEY `organization_id` (`organization_id`),
+  ADD KEY `section` (`section`),
+  ADD KEY `subject_id` (`subject_id`);
 
 --
 -- Indexes for table `lesson`
@@ -443,7 +465,8 @@ ALTER TABLE `role_master`
 -- Indexes for table `section`
 --
 ALTER TABLE `section`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `sec_value` (`sec_value`);
 
 --
 -- Indexes for table `student`
@@ -459,6 +482,13 @@ ALTER TABLE `student`
 --
 ALTER TABLE `studentsubjectmapping`
   ADD PRIMARY KEY (`studentRegistration`);
+
+--
+-- Indexes for table `subject`
+--
+ALTER TABLE `subject`
+  ADD PRIMARY KEY (`subject_id`),
+  ADD UNIQUE KEY `subject_name` (`subject_name`);
 
 --
 -- Indexes for table `syllabus`
@@ -497,6 +527,12 @@ ALTER TABLE `class`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `exam`
+--
+ALTER TABLE `exam`
+  MODIFY `examId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
@@ -533,6 +569,12 @@ ALTER TABLE `student`
   MODIFY `student_id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
@@ -547,6 +589,15 @@ ALTER TABLE `teacher`
 --
 ALTER TABLE `attendence`
   ADD CONSTRAINT `attendence_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `exam`
+--
+ALTER TABLE `exam`
+  ADD CONSTRAINT `exam_ibfk_1` FOREIGN KEY (`class`) REFERENCES `class` (`id`),
+  ADD CONSTRAINT `exam_ibfk_2` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`organization_id`),
+  ADD CONSTRAINT `exam_ibfk_3` FOREIGN KEY (`section`) REFERENCES `section` (`id`),
+  ADD CONSTRAINT `exam_ibfk_4` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
 
 --
 -- Constraints for table `login`

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2019 at 10:27 PM
+-- Generation Time: Aug 25, 2019 at 05:41 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -39,14 +39,23 @@ INSERT INTO `class` (`id`, `class_value`) VALUES
 (2, 'II'),
 (3, 'III'),
 (4, 'IV'),
+(9, 'IX'),
 (5, 'V'),
 (6, 'VI'),
 (7, 'VII'),
 (8, 'VIII'),
-(9, 'IX'),
 (10, 'X'),
 (11, 'XI'),
 (12, 'XII');
+
+--
+-- Dumping data for table `exam`
+--
+
+INSERT INTO `exam` (`examId`, `organization_id`, `class`, `section`, `exam_name`, `subject_id`, `total_marks`, `timestamp`) VALUES
+(1, 1, 5, 2, 'Test Exam', 1, 100, '2019-08-27 04:00:00'),
+(2, 1, 5, 2, 'Test Exam Pre', 1, 100, '2019-08-09 07:30:00'),
+(3, 2, 11, 3, 'Test orga 2', 1, 100, '2019-08-30 18:30:00');
 
 --
 -- Dumping data for table `login`
@@ -94,8 +103,8 @@ INSERT INTO `role_master` (`role_id`, `role`) VALUES
 INSERT INTO `section` (`id`, `sec_value`) VALUES
 (1, 'A'),
 (2, 'B'),
-(3, 'Science'),
-(4, 'Commerce');
+(4, 'Commerce'),
+(3, 'Science');
 
 --
 -- Dumping data for table `student`
@@ -104,6 +113,13 @@ INSERT INTO `section` (`id`, `sec_value`) VALUES
 INSERT INTO `student` (`student_id`, `registration_id`, `organization_id`, `student_first_name`, `student_last_name`, `rollno`, `class`, `section`, `attd_percentage`, `isDeleted`) VALUES
 (1, 'Test/01', 1, 'Neelanjan', 'Saha', 1, 5, 1, '100.00', 'N'),
 (2, 'test/02', 2, 'Test', 'Test last', 5, 7, 2, '100.00', 'N');
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`subject_id`, `subject_name`) VALUES
+(1, 'Testing');
 
 --
 -- Dumping data for table `teacher`

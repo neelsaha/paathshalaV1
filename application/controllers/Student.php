@@ -18,7 +18,6 @@ class Student extends CI_Controller {
             }
         }else{
             TRC_LOG('debug','Unaothorized access');
-            $aStatusCode = 401;
         }
         $this->inputoutput->setResponse($aStatusCode,$aResponse);
     }
@@ -37,7 +36,6 @@ class Student extends CI_Controller {
             }
         }else{
             TRC_LOG('debug','Unauthorized access');
-            $aStatusCode = 401;
         }
         $this->inputoutput->setResponse($aStatusCode,$aResponse);
     }
