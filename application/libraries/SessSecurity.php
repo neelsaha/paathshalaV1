@@ -19,12 +19,12 @@ class SessSecurity{
                 $oStatusCode = 200;
                 $aStatus = true;
             }else{
-                $oStatusCode = 401;
+                $oStatusCode = 403;
             }
         }else{
             $oStatusCode = 401;
         }
-        TRC_LOG('debug',"Check status: ".($aStatus?'true':'false'));
+        TRC_LOG('debug',"Check status: ".($aStatus?'true':'false')." StatusCode: ".$oStatusCode);
         return $aStatus;
     }
     public function destroy(){
