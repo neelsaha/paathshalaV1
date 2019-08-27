@@ -15,7 +15,7 @@ class ClassSecModel extends CI_Model {
             $aResult = $this->db->get()->result();
             $aData = array("list" => $aResult, "num_rows" => count($aResult));
             TRC_LOG('debug',"QUERY :: ".$this->db->last_query());
-            TRC_LOG('debug',"DATA :: ".json_encode($aData, JSON_UNESCAPED_SLASHES));
+            TRC_LOG('debug',"DATA :: ".json_encode($aResult, JSON_UNESCAPED_SLASHES));
             $oStatusCode = 200;
         }catch(Exception $e){
             TRC_LOG('error', $e->getMessage());
