@@ -33,8 +33,8 @@ class StudentModel extends CI_Model{
                     $aUserId = $this->sesssecurity->getVariableValue('userId');
                     $studentOrg = $this->db->get_where('student',array("student_id" => $iStudentId))->row()->organization_id;
                     $userOrg = $this->db->get_where('login',array("user_id" => $aUserId))->row()->organization_id;
-                    if($studentOrg!= $userOrg){
-                        $oStatusCode = 401;
+                    if($studentOrg != $userOrg){
+                        $oStatusCode = 403;
                     }
                 }
             }

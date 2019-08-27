@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2019 at 07:38 PM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Aug 25, 2019 at 05:40 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,24 +55,24 @@ CREATE TABLE `board_master` (
 
 CREATE TABLE `class` (
   `id` int(11) NOT NULL,
-  `value` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `class_value` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examtable`
+-- Table structure for table `exam`
 --
 
-CREATE TABLE `examtable` (
+CREATE TABLE `exam` (
   `examId` int(11) NOT NULL,
-  `schoolID` int(11) NOT NULL,
-  `class` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `section` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ExamName` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subjectId` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TotalMarks` int(10) NOT NULL,
-  `Date` int(11) NOT NULL
+  `organization_id` int(11) NOT NULL,
+  `class` int(10) NOT NULL,
+  `section` int(10) NOT NULL,
+  `exam_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` int(10) NOT NULL,
+  `total_marks` int(10) NOT NULL,
+  `timestamp` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -132,7 +132,7 @@ CREATE TABLE `login` (
   `password` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `first_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `mobile_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `mobile` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `student_id` int(10) DEFAULT NULL,
   `teacher_id` int(10) DEFAULT NULL,
   `organization_id` int(10) DEFAULT NULL,
@@ -176,7 +176,7 @@ CREATE TABLE `notice` (
 
 CREATE TABLE `organization` (
   `organization_id` int(50) NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `org_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `pincode` int(10) NOT NULL,
   `state` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -186,6 +186,19 @@ CREATE TABLE `organization` (
   `board_id` int(10) NOT NULL,
   `isDeleted` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organization_class_mapping`
+--
+
+CREATE TABLE `organization_class_mapping` (
+  `organization_id` int(10) NOT NULL,
+  `class` int(10) NOT NULL,
+  `section` int(10) NOT NULL,
+  `class_teacher_id` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -262,7 +275,7 @@ CREATE TABLE `role_master` (
 
 CREATE TABLE `section` (
   `id` int(11) NOT NULL,
-  `value` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `sec_value` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -275,12 +288,13 @@ CREATE TABLE `student` (
   `student_id` int(50) NOT NULL,
   `registration_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `organization_id` int(50) NOT NULL,
-  `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `student_first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `student_last_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `rollno` int(5) NOT NULL,
   `class` int(11) NOT NULL,
   `section` int(11) NOT NULL,
-  `attd_percentage` decimal(5,2) NOT NULL
+  `attd_percentage` decimal(5,2) NOT NULL,
+  `isDeleted` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -293,6 +307,17 @@ CREATE TABLE `studentsubjectmapping` (
   `studentRegistration` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `subjectId` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject`
+--
+
+CREATE TABLE `subject` (
+  `subject_id` int(11) NOT NULL,
+  `subject_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -314,8 +339,8 @@ CREATE TABLE `syllabus` (
 
 CREATE TABLE `teacher` (
   `teacher_id` int(10) NOT NULL,
-  `firstname` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lastname` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacher_first_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacher_last_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `qualification` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `organization_id` int(50) NOT NULL,
@@ -370,7 +395,18 @@ ALTER TABLE `board_master`
 -- Indexes for table `class`
 --
 ALTER TABLE `class`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `class_value` (`class_value`);
+
+--
+-- Indexes for table `exam`
+--
+ALTER TABLE `exam`
+  ADD PRIMARY KEY (`examId`),
+  ADD KEY `class` (`class`),
+  ADD KEY `organization_id` (`organization_id`),
+  ADD KEY `section` (`section`),
+  ADD KEY `subject_id` (`subject_id`);
 
 --
 -- Indexes for table `lesson`
@@ -404,6 +440,15 @@ ALTER TABLE `organization`
   ADD KEY `board_id` (`board_id`);
 
 --
+-- Indexes for table `organization_class_mapping`
+--
+ALTER TABLE `organization_class_mapping`
+  ADD PRIMARY KEY (`organization_id`,`class`,`section`),
+  ADD KEY `class` (`class`),
+  ADD KEY `section` (`section`),
+  ADD KEY `class_teacher_id` (`class_teacher_id`);
+
+--
 -- Indexes for table `remarks`
 --
 ALTER TABLE `remarks`
@@ -420,7 +465,8 @@ ALTER TABLE `role_master`
 -- Indexes for table `section`
 --
 ALTER TABLE `section`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `sec_value` (`sec_value`);
 
 --
 -- Indexes for table `student`
@@ -436,6 +482,13 @@ ALTER TABLE `student`
 --
 ALTER TABLE `studentsubjectmapping`
   ADD PRIMARY KEY (`studentRegistration`);
+
+--
+-- Indexes for table `subject`
+--
+ALTER TABLE `subject`
+  ADD PRIMARY KEY (`subject_id`),
+  ADD UNIQUE KEY `subject_name` (`subject_name`);
 
 --
 -- Indexes for table `syllabus`
@@ -474,6 +527,12 @@ ALTER TABLE `class`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `exam`
+--
+ALTER TABLE `exam`
+  MODIFY `examId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
@@ -510,6 +569,12 @@ ALTER TABLE `student`
   MODIFY `student_id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
@@ -526,6 +591,15 @@ ALTER TABLE `attendence`
   ADD CONSTRAINT `attendence_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `exam`
+--
+ALTER TABLE `exam`
+  ADD CONSTRAINT `exam_ibfk_1` FOREIGN KEY (`class`) REFERENCES `class` (`id`),
+  ADD CONSTRAINT `exam_ibfk_2` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`organization_id`),
+  ADD CONSTRAINT `exam_ibfk_3` FOREIGN KEY (`section`) REFERENCES `section` (`id`),
+  ADD CONSTRAINT `exam_ibfk_4` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
+
+--
 -- Constraints for table `login`
 --
 ALTER TABLE `login`
@@ -539,6 +613,15 @@ ALTER TABLE `login`
 --
 ALTER TABLE `organization`
   ADD CONSTRAINT `organization_ibfk_1` FOREIGN KEY (`board_id`) REFERENCES `board_master` (`board_id`);
+
+--
+-- Constraints for table `organization_class_mapping`
+--
+ALTER TABLE `organization_class_mapping`
+  ADD CONSTRAINT `organization_class_mapping_ibfk_1` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`organization_id`),
+  ADD CONSTRAINT `organization_class_mapping_ibfk_2` FOREIGN KEY (`class`) REFERENCES `class` (`id`),
+  ADD CONSTRAINT `organization_class_mapping_ibfk_3` FOREIGN KEY (`section`) REFERENCES `section` (`id`),
+  ADD CONSTRAINT `organization_class_mapping_ibfk_4` FOREIGN KEY (`class_teacher_id`) REFERENCES `teacher` (`teacher_id`);
 
 --
 -- Constraints for table `remarks`
