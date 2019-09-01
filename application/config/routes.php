@@ -58,14 +58,14 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login']['post'] = 'auth/login';
 $route['logout'] = 'auth/logout';
-$route['user']['put'] = 'user/update';
+$route['user']['post'] = 'user/update';
 $route['student/([0-9]+)']['get'] = 'student/viewStudentDetails/$1';
 $route['student/([0-9]+)/([0-9]+)']['get'] = 'student/getStudentList/$1/$2';
 $route['user/([a-z0-9A-Z]+)']['get'] = 'user/getUserDetails/$1';
 $route['user']['get'] = 'user/getMyDetails';
 $route['class']['get'] = 'classDetails/getDetails';
-$route['class/list/([a-z0-9A-Z]+)']['get'] = 'classsection/getClassList/$1';
-$route['class/list']['get'] = 'classsection/getClassList';
+$route['class/list/([a-z0-9A-Z]+)']['get'] = 'classSection/getClassList/$1';
+$route['class/list']['get'] = 'classSection/getClassList';
 $route['exams/([0-9]+)/([0-9]+)']['get'] = 'exams/getExamsForClass/$1/$2';
 $route['exams/organization/([0-9]+)'] = 'exams/getExamsForOrga/$1';
 
