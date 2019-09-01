@@ -2836,7 +2836,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"",
 													"    pm.globals.set(\"parentAuth\", \"\");",
 													"})"
@@ -2987,7 +2987,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"",
 													"    pm.globals.set(\"teacherAuth\", \"\");",
 													"})"
@@ -3548,7 +3548,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"",
 													"    pm.globals.set(\"teacherAuth\", \"\");",
 													"})"
@@ -4051,7 +4051,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"",
 													"    pm.globals.set(\"teacherAuth\", \"\");",
 													"})"
@@ -4323,7 +4323,7 @@
 												"exec": [
 													"pm.test('execute', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"",
 													"    pm.globals.set(\"schoolAuth\", \"\");",
 													"})"
@@ -4598,7 +4598,7 @@
 												"exec": [
 													"pm.test('Some test name', function () {",
 													"\tpm.response.to.have.status(200);",
-													"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"\tpm.globals.set(\"adminAuth\", \"\");",
 													"})"
 												],
@@ -4661,7 +4661,7 @@
 	],
 	"variable": [
 		{
-			"id": "8fd9b892-3d66-408d-88dc-808e6b30a758",
+			"id": "4d070f2a-17f3-496e-bcb4-33d6fec82654",
 			"key": "path",
 			"value": "http://localhost:80/paathshalaV1/",
 			"type": "string"
