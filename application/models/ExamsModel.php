@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+class ExamException extends Exception{}
 class ExamsModel extends CI_Model {
     private static $_roles = array(
         "student" => 1,
@@ -61,6 +62,55 @@ class ExamsModel extends CI_Model {
             $oStatusCode = 403;
         }
         return $aData;
+    }
+
+    public function setExamDetails($iClass,$iSection,$iParam,&$oStatusCode){
+        TRC_LOG('debug',"Inside setExamDetails");
+        $aData = array();
+        try{
+            $this->addOrgaToRequest($iParam);
+            $this->addOtherParameters($iParam,$iClass,$iSection);
+            $this->db->insert('exam',$iParam);
+            TRC_LOG('debug',"QUERY :: ".$this->db->last_query());
+            // $aData = $this->getDetails($oStatusCode,$aUsername);
+            // TRC_LOG('debug',"DATA :: ".json_encode($aData, JSON_UNESCAPED_SLASHES));
+            // TRC_LOG('debug','Success...');
+        }catch(ExamException $e){
+            TRC_LOG('error','Validation failed: '.$e->getMessage());
+            $aData['error'] = $e->getMessage();
+            $oStatusCode = 400;
+        }catch(Exception $e){
+            TRC_LOG('error','Database operation failed: '.$e->getMessage());
+            $oStatusCode = 500;
+        }
+        return $aData;
+    }
+
+    private function addOtherParameters(&$ioParam,$iClass,$iSection){
+        TRC_LOG('debug',"Inside addOtherParameters");
+        $this->load->model('ClassSecModel');
+        if(!$this->ClassSecModel->isClassExist($iClass)){
+            throw new ExamException("Invalid class : ".$iClass);
+        }elseif(!$this->ClassSecModel->isSectionExist($iSection)){
+            throw new ExamException("Invalid section : ".$iSection);
+        }else{
+            $ioParam['class'] = $iClass;
+            $ioParam['section'] = $iSection;
+            $ioParam['added_by'] = $this->sesssecurity->getVariableValue('userId');
+        }
+    }
+
+    private function addOrgaToRequest(&$ioParam){
+        TRC_LOG('debug',"Inside addOrgaToRequest");
+        $aRole = $this->sesssecurity->getVariableValue('role');
+        $aOrga = $this->sesssecurity->getVariableValue('orga');
+        if($aRole == self::$_roles['superAdmin'] && !array_key_exists('organization_id', $ioParam)){
+            throw new ExamException("Organization id missing for role: ".$aRole);
+        }elseif ($aRole != self::$_roles['superAdmin'] && array_key_exists('organization_id', $ioParam)) {
+            throw new ExamException("Organization id added for role: ".$aRole);
+        }elseif ($aRole != self::$_roles['superAdmin'] && !array_key_exists('organization_id', $ioParam)){
+            $ioParam['organization_id'] = $aOrga;
+        }
     }
 
     private function isViewAllowed($iOrga){

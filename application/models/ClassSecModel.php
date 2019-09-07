@@ -24,6 +24,39 @@ class ClassSecModel extends CI_Model {
         return $aData;
     }
 
+    public function isClassExist($iClass){
+        TRC_LOG('debug',"Inside isClassExists");
+        $aStatus = false;
+        try{
+            $aResult = $this->db->get_where('class', array("id" => $iClass))->row();
+            TRC_LOG('debug',"QUERY :: ".$this->db->last_query());
+            if($aResult){
+                $aStatus = true;
+            }
+        }catch(Exception $e){
+            TRC_LOG('error', $e->getMessage());
+        }finally{
+            return $aStatus;
+        }
+    }
+
+    public function isSectionExist($iSection){
+        TRC_LOG('debug',"Inside isSectionExists");
+        $aStatus = false;
+        try{
+            TRC_LOG('debug',"here");
+            $aResult = $this->db->get_where('section', array("id" => $iSection))->row();
+            TRC_LOG('debug',"QUERY :: ".$this->db->last_query());
+            if($aResult){
+                $aStatus = true;
+            }
+        }catch(Exception $e){
+            TRC_LOG('error', $e->getMessage());
+        }finally{
+            return $aStatus;
+        }
+    }
+
 }
 
 ?>
