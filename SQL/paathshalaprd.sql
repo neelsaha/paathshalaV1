@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2019 at 05:40 PM
+-- Generation Time: Sep 07, 2019 at 05:29 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -72,7 +72,8 @@ CREATE TABLE `exam` (
   `exam_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `subject_id` int(10) NOT NULL,
   `total_marks` int(10) NOT NULL,
-  `timestamp` timestamp NULL DEFAULT NULL
+  `timestamp` timestamp NULL DEFAULT NULL,
+  `added_by` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -406,7 +407,8 @@ ALTER TABLE `exam`
   ADD KEY `class` (`class`),
   ADD KEY `organization_id` (`organization_id`),
   ADD KEY `section` (`section`),
-  ADD KEY `subject_id` (`subject_id`);
+  ADD KEY `subject_id` (`subject_id`),
+  ADD KEY `added_by` (`added_by`);
 
 --
 -- Indexes for table `lesson`
@@ -597,7 +599,8 @@ ALTER TABLE `exam`
   ADD CONSTRAINT `exam_ibfk_1` FOREIGN KEY (`class`) REFERENCES `class` (`id`),
   ADD CONSTRAINT `exam_ibfk_2` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`organization_id`),
   ADD CONSTRAINT `exam_ibfk_3` FOREIGN KEY (`section`) REFERENCES `section` (`id`),
-  ADD CONSTRAINT `exam_ibfk_4` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
+  ADD CONSTRAINT `exam_ibfk_4` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`),
+  ADD CONSTRAINT `exam_ibfk_5` FOREIGN KEY (`added_by`) REFERENCES `login` (`user_id`);
 
 --
 -- Constraints for table `login`

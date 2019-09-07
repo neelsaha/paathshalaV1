@@ -241,7 +241,7 @@
 								"exec": [
 									"pm.test('Some test name', function () {",
 									"\tpm.response.to.have.status(404);",
-									"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 									"})"
 								],
 								"type": "text/javascript"
@@ -1977,7 +1977,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"",
 											"    pm.globals.set(\"teacherAuth\", \"\");",
 											"})"
@@ -2294,7 +2294,7 @@
 										"exec": [
 											"pm.test('execute', function () {",
 											"\tpm.response.to.have.status(200);",
-											"\tpm.expect(pm.response.responseTime).to.be.below(1000);",
+											"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 											"",
 											"    pm.globals.set(\"schoolAuth\", \"\");",
 											"})"
@@ -3539,6 +3539,40 @@
 									"response": []
 								},
 								{
+									"name": "add exam fail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36d2ebd3-d075-4f60-bc6d-0f80c1867cca",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(403);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tpm.expect(pm.response.responseSize).to.equal(0);",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{path}}exams/9/2",
+											"host": [
+												"{{path}}exams"
+											],
+											"path": [
+												"9",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "logout",
 									"event": [
 										{
@@ -3766,6 +3800,40 @@
 											"path": [
 												"organization",
 												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add exam fail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36d2ebd3-d075-4f60-bc6d-0f80c1867cca",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(403);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tpm.expect(pm.response.responseSize).to.equal(0);",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{path}}exams/9/2",
+											"host": [
+												"{{path}}exams"
+											],
+											"path": [
+												"9",
+												"2"
 											]
 										}
 									},
@@ -4042,6 +4110,154 @@
 									"response": []
 								},
 								{
+									"name": "add exam success",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36d2ebd3-d075-4f60-bc6d-0f80c1867cca",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tpm.expect(pm.response.responseSize).to.equal(0);",
+													"})",
+													"",
+													"/*pm.test(\"Body is correct\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.response.to.have.body('{\"list\":[{\"exam_name\":\"Test Exam\",\"subject_name\":\"Testing\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"B\",\"total_marks\":\"100\",\"timestamp\":\"'+jsonData.list[0].timestamp+'\"},{\"exam_name\":\"Test Exam Pre\",\"subject_name\":\"Testing\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"B\",\"total_marks\":\"100\",\"timestamp\":\"'+jsonData.list[1].timestamp+'\"}],\"num_rows\":2}');",
+													"})*/"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"exam_name\" : \"Test Exam teacher\",\n\t\"subject_id\" : \"1\",\n\t\"total_marks\" : \"50\",\n\t\"timestamp\" : \"2019-08-05 08:00:00\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}exams/9/2",
+											"host": [
+												"{{path}}exams"
+											],
+											"path": [
+												"9",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add exam fail class",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36d2ebd3-d075-4f60-bc6d-0f80c1867cca",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(400);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"})",
+													"",
+													"pm.test(\"Body is correct\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.response.to.have.body('{\"error\":\"Invalid class : 900\"}');",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"exam_name\" : \"Test Exam teacher\",\n\t\"subject_id\" : \"1\",\n\t\"total_marks\" : \"50\",\n\t\"timestamp\" : \"2019-08-05 08:00:00\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}exams/900/2",
+											"host": [
+												"{{path}}exams"
+											],
+											"path": [
+												"900",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add exam fail section",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36d2ebd3-d075-4f60-bc6d-0f80c1867cca",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(400);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"})",
+													"",
+													"pm.test(\"Body is correct\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.response.to.have.body('{\"error\":\"Invalid section : 200\"}');",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"exam_name\" : \"Test Exam teacher\",\n\t\"subject_id\" : \"1\",\n\t\"total_marks\" : \"50\",\n\t\"timestamp\" : \"2019-08-05 08:00:00\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}exams/9/200",
+											"host": [
+												"{{path}}exams"
+											],
+											"path": [
+												"9",
+												"200"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "logout",
 									"event": [
 										{
@@ -4249,10 +4465,10 @@
 													"})",
 													"",
 													"",
-													"pm.test(\"Body is correct\", function () {",
+													"/*pm.test(\"Body is correct\", function () {",
 													"    var jsonData = pm.response.json();",
 													"    pm.response.to.have.body('{\"list\":[{\"exam_name\":\"Test Exam\",\"subject_name\":\"Testing\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"B\",\"total_marks\":\"100\",\"timestamp\":\"'+jsonData.list[0].timestamp+'\"},{\"exam_name\":\"Test Exam Pre\",\"subject_name\":\"Testing\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"B\",\"total_marks\":\"100\",\"timestamp\":\"'+jsonData.list[1].timestamp+'\"}],\"num_rows\":2}');",
-													"})",
+													"})*/",
 													""
 												],
 												"type": "text/javascript"
@@ -4308,6 +4524,154 @@
 											"path": [
 												"organization",
 												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add exam success",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36d2ebd3-d075-4f60-bc6d-0f80c1867cca",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(200);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"\tpm.expect(pm.response.responseSize).to.equal(0);",
+													"})",
+													"",
+													"/*pm.test(\"Body is correct\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.response.to.have.body('{\"list\":[{\"exam_name\":\"Test Exam\",\"subject_name\":\"Testing\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"B\",\"total_marks\":\"100\",\"timestamp\":\"'+jsonData.list[0].timestamp+'\"},{\"exam_name\":\"Test Exam Pre\",\"subject_name\":\"Testing\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"B\",\"total_marks\":\"100\",\"timestamp\":\"'+jsonData.list[1].timestamp+'\"}],\"num_rows\":2}');",
+													"})*/"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"exam_name\" : \"Test Exam schoolAdmin\",\n\t\"subject_id\" : \"1\",\n\t\"total_marks\" : \"50\",\n\t\"timestamp\" : \"2019-08-05 08:00:00\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}exams/9/2",
+											"host": [
+												"{{path}}exams"
+											],
+											"path": [
+												"9",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add exam fail class",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36d2ebd3-d075-4f60-bc6d-0f80c1867cca",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(400);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"})",
+													"",
+													"pm.test(\"Body is correct\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.response.to.have.body('{\"error\":\"Invalid class : 900\"}');",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"exam_name\" : \"Test Exam teacher\",\n\t\"subject_id\" : \"1\",\n\t\"total_marks\" : \"50\",\n\t\"timestamp\" : \"2019-08-05 08:00:00\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}exams/900/2",
+											"host": [
+												"{{path}}exams"
+											],
+											"path": [
+												"900",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add exam fail section",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36d2ebd3-d075-4f60-bc6d-0f80c1867cca",
+												"exec": [
+													"pm.test('execute', function () {",
+													"\tpm.response.to.have.status(400);",
+													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
+													"})",
+													"",
+													"pm.test(\"Body is correct\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.response.to.have.body('{\"error\":\"Invalid section : 200\"}');",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"exam_name\" : \"Test Exam teacher\",\n\t\"subject_id\" : \"1\",\n\t\"total_marks\" : \"50\",\n\t\"timestamp\" : \"2019-08-05 08:00:00\"\n}"
+										},
+										"url": {
+											"raw": "{{path}}exams/9/200",
+											"host": [
+												"{{path}}exams"
+											],
+											"path": [
+												"9",
+												"200"
 											]
 										}
 									},
@@ -4520,10 +4884,10 @@
 													"\tpm.expect(pm.response.responseTime).to.be.below(2000);",
 													"})",
 													"",
-													"pm.test(\"Body is correct\", function () {",
+													"/*pm.test(\"Body is correct\", function () {",
 													"    var jsonData = pm.response.json();",
 													"    pm.response.to.have.body('{\"list\":[{\"exam_name\":\"Test Exam\",\"subject_name\":\"Testing\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"B\",\"total_marks\":\"100\",\"timestamp\":\"'+jsonData.list[0].timestamp+'\"},{\"exam_name\":\"Test Exam Pre\",\"subject_name\":\"Testing\",\"org_name\":\"Test School\",\"class_value\":\"V\",\"sec_value\":\"B\",\"total_marks\":\"100\",\"timestamp\":\"'+jsonData.list[1].timestamp+'\"}],\"num_rows\":2}');",
-													"})",
+													"})*/",
 													"",
 													""
 												],
@@ -4661,7 +5025,14 @@
 	],
 	"variable": [
 		{
-			"id": "4d070f2a-17f3-496e-bcb4-33d6fec82654",
+			"id": "9182691c-905f-4e67-b3d6-bcc055c3189f",
+			"key": "path",
+			"value": "https://paathshala001.000webhostapp.com/",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"id": "67c2695d-fb1c-453d-8a48-5fc35109a5ea",
 			"key": "path",
 			"value": "http://localhost:80/paathshalaV1/",
 			"type": "string"

@@ -68,6 +68,7 @@ $route['class/list/([a-z0-9A-Z]+)']['get'] = 'classSection/getClassList/$1';
 $route['class/list']['get'] = 'classSection/getClassList';
 $route['exams/([0-9]+)/([0-9]+)']['get'] = 'exams/getExamsForClass/$1/$2';
 $route['exams/organization/([0-9]+)'] = 'exams/getExamsForOrga/$1';
+$route['exams/([0-9]+)/([0-9]+)']['post'] = 'exams/addExam/$1/$2';
 
 //methods not allowed
 $route['status405'] = 'rejectRequest/status405';
